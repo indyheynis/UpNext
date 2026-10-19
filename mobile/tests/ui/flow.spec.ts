@@ -7,6 +7,7 @@ test('home, sport selection and privacy work on a mobile viewport', async ({ pag
   await page.waitForTimeout(650);
   await page.screenshot({ path: 'test-results/home.png', fullPage: true });
   await page.getByRole('button', { name: 'Make my first poster' }).click();
+  await expect(page).toHaveURL(/\/sport$/);
   await page.getByRole('radio').filter({ hasText: 'BASKETBALL' }).click();
   await expect(page.getByRole('radio').filter({ hasText: 'BASKETBALL' })).toHaveAttribute(
     'aria-checked',
@@ -25,6 +26,7 @@ test('photo upload, details and all poster styles render through the editor', as
   page.on('pageerror', (e) => errors.push(e.message));
   await page.goto('/');
   await page.getByRole('button', { name: 'Make my first poster' }).click();
+  await expect(page).toHaveURL(/\/sport$/);
   await page.getByRole('button', { name: "That's my game" }).click();
   const chooser = page.waitForEvent('filechooser');
   await page.getByRole('button', { name: 'Choose athlete photo' }).click();

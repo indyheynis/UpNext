@@ -16,13 +16,15 @@ The mobile workflow needs no account, database or paid API key. There is no bund
 
 ## Run the mobile app
 
-Use Node 24, npm and Expo Go compatible with the pinned SDK 58, or an Expo preview build.
+Use Node 24, npm and Expo Go compatible with the pinned SDK 57, or an Expo preview build.
 
 ```sh
 cd mobile
 npm ci
-npx expo start
+npm start
 ```
+
+`npm start` explicitly targets Expo Go. Use `npm run start:dev` only with an installed development build.
 
 Scan the QR code on an iPhone/Android on the same network. `npm run ios` requires macOS/Xcode; `npm run android` requires an Android emulator/device and SDK. `npm run web` supports UI development; native PNG rendering, photo permissions and sharing require devices.
 

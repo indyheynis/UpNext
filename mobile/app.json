@@ -51,7 +51,8 @@
         }
       ],
       "expo-sharing",
-      "expo-router"
+      "expo-router",
+      "expo-status-bar"
     ],
     "scheme": "playerhype"
   }
