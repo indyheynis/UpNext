@@ -1,0 +1,19 @@
+services:
+  mysql:
+    image: mysql:8.4
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:3306:3306"
+    environment:
+      MYSQL_DATABASE: playerhype
+      MYSQL_USER: playerhype
+      MYSQL_PASSWORD: ${DB_PASSWORD:?Set DB_PASSWORD in your shell or root .env}
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:?Set DB_ROOT_PASSWORD in your shell or root .env}
+    volumes:
+      - playerhype_mysql:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 5s
+      retries: 20
+volumes:
+  playerhype_mysql:
